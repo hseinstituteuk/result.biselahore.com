@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BISE Lahore - Result Portal</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #eaf0de;
+      color: #000;
+      margin: 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #f4f7e8;
+      border: 2px solid #2f4f2f;
+      border-radius: 12px;
+    }
+    h1 {
+      color: #0c3f10;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-bottom: 30px;
+      color: #3c6b3c;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+    }
+    button {
+      background-color: #0b3f10;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #145e1b;
+    }
+    #resultSection {
+      margin-top: 30px;
+      display: none;
+    }
+    #dmcImage {
+      max-width: 100%;
+      border: 1px solid #666;
+      border-radius: 10px;
+    }
+    .logo {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="Lahore_Logo.png" alt="BISE Logo" width="80">
+    </div>
+    <h1>BISE LAHORE</h1>
+    <h2>Previous Results</h2>
+
+    <label for="rollNo">Roll Number:</label>
+    <input type="text" id="rollNo" placeholder="Enter Roll Number" />
+
+    <label for="examType">Exam Type:</label>
+    <select id="examType">
+      <option value="PART-I (ANNUAL)">PART-I (ANNUAL)</option>
+      <option value="PART-II (ANNUAL)" selected>PART-II (ANNUAL)</option>
+    </select>
+
+    <label for="year">Year:</label>
+    <select id="year">
+      <option value="2024">2024</option>
+      <option value="2025" selected>2025</option>
+    </select>
+
+    <button onclick="showResult()">VIEW RESULT</button>
+
+    <div id="resultSection">
+      <h3>Result DMC</h3>
+      <img id="dmcImage" src="" alt="DMC Image" />
+    </div>
+  </div>
+
+  <script>
+    function showResult() {
+      const rollNo = document.getElementById("rollNo").value.trim();
+      const resultSection = document.getElementById("resultSection");
+      const dmcImage = document.getElementById("dmcImage");
+
+      // Map roll numbers to DMC image files
+      const dmcImages = {
+        "271371": "Screenshot_2-8-2025_22264_result.biselahore.com.jpeg",
+        "100101": "dmc_27837.jpeg",
+        "100102": "dmc_100102.jpeg",
+        "100103": "dmc_100103.jpeg",
+        "100104": "dmc_100104.jpeg"
+      };
+
+      if (dmcImages[rollNo]) {
+        dmcImage.src = dmcImages[rollNo];
+        resultSection.style.display = "block";
+      } else {
+        alert("❌ No result found for this roll number.");
+        resultSection.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
